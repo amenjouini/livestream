@@ -209,8 +209,8 @@ let currentUser = 'User'; // Replace with dynamic user data if available
 // Connect to WebSocket
 function connectWebSocket() {
 
-    webSocket = new WebSocket('ws://localhost:8081');
-    //webSocket = new WebSocket("wss://dry-badlands-24679-da8caf8493c4.herokuapp.com");
+    //webSocket = new WebSocket('ws://localhost:8081');
+    webSocket = new WebSocket("wss://dry-badlands-24679-da8caf8493c4.herokuapp.com");
 
     webSocket.onopen = () => {
         console.log('Connected to WebSocket server');
