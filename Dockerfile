@@ -35,4 +35,4 @@ RUN apt-get update && apt-get install -y npm && npm install -g pm2
 EXPOSE 8080 8000 8081 1935
 
 # Start all services
-CMD ["sh", "-c", "node /usr/src/auth/server.js & pm2-runtime /usr/src/websocket/server.js & nginx -g 'daemon off;'"]
+CMD ["sh", "-c", "pm2-runtime /usr/src/websocket/server.js & node /usr/src/auth/server.js & nginx -g 'daemon off;'"]
