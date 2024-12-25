@@ -3,15 +3,15 @@ FROM node:18.19 as node_base
 
 # Auth service setup
 WORKDIR /usr/src/auth
-COPY auth/package*.json ./auth/
+COPY auth/package*.json ./
 RUN npm install
-COPY auth/server.js ./auth/
+COPY auth/server.js ./
 
 # WebSocket service setup
 WORKDIR /usr/src/websocket
-COPY websocket/package*.json ./websocket/
+COPY websocket/package*.json ./
 RUN npm install && npm install pm2 -g
-COPY websocket/server.js ./websocket/
+COPY websocket/server.js ./
 
 # NGINX-RTMP setup
 FROM tiangolo/nginx-rtmp as nginx_base
