@@ -3,20 +3,22 @@ FROM node:18.19 as node_base
 
 # Auth service setup
 WORKDIR /usr/src/auth
-COPY auth/package*.json ./  # Copy package.json for auth
+COPY auth/package*.json ./  
 RUN npm install
-COPY auth/server.js ./      # Copy auth server code
+COPY auth/server.js ./      
 
 # WebSocket service setup
 WORKDIR /usr/src/websocket
-COPY websocket/package*.json ./  # Copy package.json for websocket
+COPY websocket/package*.json ./  
 RUN npm install && npm install pm2 -g
-COPY websocket/server.js ./      # Copy websocket server code
+COPY websocket/server.js ./      
 
 # Base image for NGINX-RTMP
 FROM tiangolo/nginx-rtmp as nginx_base
-COPY rtmp/nginx.conf /etc/nginx/nginx.conf  # Copy NGINX RTMP config
-COPY rtmp/index.html /www/                 # Copy static files
+COPY rtmp/nginx.conf /etc/nginx/nginx.conf  
+
+COPY rtmp/index.html /www/                 
+
 
 # Final image combining all services
 FROM node:18.19
