@@ -39,9 +39,6 @@ COPY --from=websocket-build /usr/src/websocket /usr/src/websocket
 # Set environment variables for paths
 ENV PATH="/usr/local/nginx/sbin:/usr/src/websocket/node_modules/.bin:${PATH}"
 
-# Copy Supervisor configuration
-COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-
 # Expose necessary ports
 EXPOSE 1935 8080 8081
 
