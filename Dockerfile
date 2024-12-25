@@ -32,7 +32,7 @@ COPY --from=nginx_base /www /www
 RUN apt-get update && apt-get install -y npm && npm install -g pm2
 
 # Expose the required ports
-EXPOSE 8000 8081 1935
+EXPOSE 8080 8000 8081 1935
 
 # Start all services
 CMD ["sh", "-c", "pm2-runtime /usr/src/websocket/server.js & node /usr/src/auth/server.js & nginx -g 'daemon off;'"]
