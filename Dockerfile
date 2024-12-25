@@ -19,7 +19,16 @@ COPY rtmp/nginx.conf /etc/nginx/nginx.conf
 COPY rtmp/index.html /www/
 
 # Final container setup
-FROM node:18.19
+FROM ubuntu:22.04
+
+# Install required tools
+RUN apt-get update && \
+    apt-get install -y nginx && \
+    curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
+    apt-get install -y nodejs && \
+    npm install -g pm2
+
+# Copy files from the build stages
 COPY --from=nginx_base /etc/nginx /etc/nginx
 COPY --from=nginx_base /www /www
 COPY --from=node_base /usr/src /usr/src
@@ -28,4 +37,4 @@ COPY --from=node_base /usr/src /usr/src
 EXPOSE 8000 8081 1935
 
 # Start all services
-CMD ["sh", "-c", "pm2-runtime /usr/src/websocket/server.js & node /usr/src/auth/server.js & nginx -g 'daemon off;'"]
+CMD ["sh", "-c", "nginx && pm2-runtime /usr/src/websocket/server.js & node /usr/src/auth/server.js"]
