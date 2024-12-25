@@ -1,7 +1,7 @@
 version: "3.9"
 services:
   rtmp:
-    build: ./rtmp
+    build: ./
     ports:
       - "1935:1935"
       - "8080:8080"
@@ -10,11 +10,11 @@ services:
       - ./data:/tmp/hls
 
   auth:
-    build: ./auth
+    build: ./
     container_name: auth_server
 
   websocket-server:
-    build: ./websocket
+    build: ./
     ports:
       - "8081:8081"
     environment:
