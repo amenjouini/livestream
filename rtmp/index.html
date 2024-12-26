@@ -200,12 +200,15 @@
     <div class="container">
         <div class="welcome-banner">Welcome to my soutenance!</div>
         <div class="stream">
-            <div class="flowplayer-embed-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width:100%;">
-                <iframe webkitAllowFullScreen mozallowfullscreen allowfullscreen src="https://embed.wowza.com/api/video/embed.jsp?id=5vs6gq5p&pi=89335023-e9fd-435f-8f07-ffd29047fbe9" title="0" byline="0" portrait="0" frameborder="0" allow="autoplay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
-              </div>
+            <iframe src="https://embed.wowza.com/api/video/embed.jsp?id=5vs6gq5p&pi=89335023-e9fd-435f-8f07-ffd29047fbe9" 
+                    frameborder="0" 
+                    scrolling="no" 
+                    allowfullscreen="true">
+            </iframe>
         </div>
         <div class="chat">
             <div class="chat-header">Live Chat</div>
+           
             <div class="chat-input">
                 <input type="text" id="chatInput" placeholder="Type a message...">
                 <button id="sendButton">Send</button>
