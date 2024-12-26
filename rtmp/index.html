@@ -5,183 +5,183 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Live Stream & Chat</title>
     <style>
-      * {
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;
-          font-family: Arial, sans-serif;
-      }
-
-      body {
-          background-color: #121212;
-          color: #fff;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          height: 100vh;
-          overflow: hidden;
-      }
-
-      .container {
-          display: flex;
-          flex-direction: column;
-          width: 100%;
-          max-width: 900px;
-          height: 100%;
-          border: 2px solid #333;
-          border-radius: 10px;
-          overflow: hidden;
-      }
-
-      .welcome-banner {
-          position: relative;
-          height: 150px;
-          background: url('https://www.entreprises-magazine.com/wp-content/uploads/2021/10/Esprit.png') no-repeat center center/cover;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          text-align: center;
-          color: #4caf50;
-          font-size: 2em;
-          font-weight: bold;
-          text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-          animation: fadeIn 2s ease-in-out;
-      }
-
-      @keyframes fadeIn {
-          from {
-              opacity: 0;
-          }
-          to {
-              opacity: 1;
-          }
-      }
-
-      .stream {
-          background: #000;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          padding: 10px 0;
-          flex: 0 0 250px; /* Adjusted height */
-      }
-
-      .stream iframe {
-          width: 100%;
-          height: 100%;
-          border: none;
-      }
-
-      .chat {
-          flex: 1;
-          background: #1e1e1e;
-          display: flex;
-          flex-direction: column;
-      }
-
-      .chat-header {
-          background: #333;
-          padding: 10px;
-          text-align: center;
-          font-size: 1.2em;
-          font-weight: bold;
-      }
-
-      .chat-messages {
-          flex: 1;
-          padding: 10px;
-          overflow-y: auto;
-          font-size: 0.85em;
-          scrollbar-color: #4caf50 #333;
-      }
-
-      .chat-messages::-webkit-scrollbar {
-          width: 8px;
-      }
-
-      .chat-messages::-webkit-scrollbar-thumb {
-          background-color: #4caf50;
-          border-radius: 5px;
-      }
-
-      .chat-messages .message {
-          margin-bottom: 5px;
-          padding: 5px 10px;
-          border-radius: 12px;
-          max-width: 70%;
-          word-wrap: break-word;
-          display: flex;
-          flex-direction: column;
-          background-color: #f1f1f1;
-          color: #333;
-      }
-
-      .chat-messages .message span.sender {
-          font-weight: bold;
-          color: #4caf50;
-          margin-bottom: 3px;
-      }
-
-      .chat-messages .message span.timestamp {
-          font-size: 0.7em;
-          color: #888;
-          text-align: right;
-      }
-
-      .chat-input {
-          display: flex;
-          padding: 10px;
-          background: #333;
-      }
-
-      .chat-input input {
-          flex: 1;
-          padding: 8px;
-          border: none;
-          border-radius: 5px;
-          margin-right: 10px;
-          background: #444;
-          color: #fff;
-      }
-
-      .chat-input input::placeholder {
-          color: #bbb;
-      }
-
-      .chat-input button {
-          padding: 8px 12px;
-          border: none;
-          border-radius: 5px;
-          background-color: #4caf50;
-          color: white;
-          cursor: pointer;
-      }
-
-      .chat-input button:hover {
-          background-color: #45a049;
-      }
-
-      @media (max-width: 768px) {
-          .chat-messages .message {
-              font-size: 0.75em;
-              padding: 5px 8px;
-          }
-          .chat-input input, .chat-input button {
-              padding: 6px;
-          }
-      }
-  </style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+  
+        body {
+            background-color: #121212;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+  
+        .container {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 900px;
+            height: 100%;
+            border: 2px solid #333;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+  
+        .welcome-banner {
+            position: relative;
+            height: 150px;
+            background: url('https://www.entreprises-magazine.com/wp-content/uploads/2021/10/Esprit.png') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #4caf50;
+            font-size: 2em;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 2s ease-in-out;
+        }
+  
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+  
+        .stream {
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 0;
+            flex: 0 0 250px; /* Adjusted height */
+        }
+  
+        .stream iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+  
+        .chat {
+            flex: 1;
+            background: #1e1e1e;
+            display: flex;
+            flex-direction: column;
+        }
+  
+        .chat-header {
+            background: #333;
+            padding: 10px;
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+  
+        .chat-messages {
+            flex: 1;
+            padding: 10px;
+            overflow-y: auto;
+            font-size: 0.85em;
+            scrollbar-color: #4caf50 #333;
+        }
+  
+        .chat-messages::-webkit-scrollbar {
+            width: 8px;
+        }
+  
+        .chat-messages::-webkit-scrollbar-thumb {
+            background-color: #4caf50;
+            border-radius: 5px;
+        }
+  
+        .chat-messages .message {
+            margin-bottom: 5px;
+            padding: 5px 10px;
+            border-radius: 12px;
+            max-width: 70%;
+            word-wrap: break-word;
+            display: flex;
+            flex-direction: column;
+            background-color: #f1f1f1;
+            color: #333;
+        }
+  
+        .chat-messages .message span.sender {
+            font-weight: bold;
+            color: #4caf50;
+            margin-bottom: 3px;
+        }
+  
+        .chat-messages .message span.timestamp {
+            font-size: 0.7em;
+            color: #888;
+            text-align: right;
+        }
+  
+        .chat-input {
+            display: flex;
+            padding: 10px;
+            background: #333;
+        }
+  
+        .chat-input input {
+            flex: 1;
+            padding: 8px;
+            border: none;
+            border-radius: 5px;
+            margin-right: 10px;
+            background: #444;
+            color: #fff;
+        }
+  
+        .chat-input input::placeholder {
+            color: #bbb;
+        }
+  
+        .chat-input button {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4caf50;
+            color: white;
+            cursor: pointer;
+        }
+  
+        .chat-input button:hover {
+            background-color: #45a049;
+        }
+  
+        @media (max-width: 768px) {
+            .chat-messages .message {
+                font-size: 0.75em;
+                padding: 5px 8px;
+            }
+            .chat-input input, .chat-input button {
+                padding: 6px;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
         <div class="welcome-banner">Welcome to my soutenance!</div>
         <div class="stream">
-            <iframe src="https://embed.api.video/live/lixq7YHe3j5BPvBt6e34W3d" width="100%" height="100%" allowfullscreen></iframe>
+            <iframe src="https://embed.api.video/live/lixq7YHe3j5BPvBt6e34W3d" 
+            width="100%" height="100%" frameborder="0" scrolling="no" allowfullscreen="true"></iframe>
         </div>
         <div class="chat">
             <div class="chat-header">Live Chat</div>
-            <div class="chat-messages" id="chatMessages"></div>
             <div class="chat-input">
                 <input type="text" id="chatInput" placeholder="Type a message...">
                 <button id="sendButton">Send</button>
@@ -190,55 +190,105 @@
     </div>
 
     <script>
-        let webSocket;
-        const chatMessages = document.getElementById('chatMessages');
-        const chatInput = document.getElementById('chatInput');
-        const sendButton = document.getElementById('sendButton');
-        let currentUser = 'User';
+let webSocket;
+const chatMessages = document.getElementById('chatMessages');
+const chatInput = document.getElementById('chatInput');
+const sendButton = document.getElementById('sendButton');
+let currentUser = 'User'; // Replace with dynamic user data if available
 
-        function connectWebSocket() {
-            webSocket = new WebSocket("wss://afternoon-forest-42357-edd1a7cc0ca1.herokuapp.com/");
+// Connect to WebSocket
+function connectWebSocket() {
 
-            webSocket.onopen = () => {
-                console.log('Connected to WebSocket server');
-            };
+    //webSocket = new WebSocket('ws://localhost:8081');
+    webSocket = new WebSocket("wss://afternoon-forest-42357-edd1a7cc0ca1.herokuapp.com/");
 
-            webSocket.onmessage = (event) => {
-                const data = JSON.parse(event.data);
-                const messageElement = document.createElement('div');
-                messageElement.classList.add('message');
-                messageElement.innerHTML = `
-                    <span class="sender">${data.senderName}:</span> ${data.text}
-                    <span class="timestamp">${new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
-                `;
-                chatMessages.appendChild(messageElement);
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-            };
+    webSocket.onopen = () => {
+        console.log('Connected to WebSocket server');
+    };
 
-            webSocket.onerror = (error) => {
-                console.error('WebSocket error:', error);
-            };
+    webSocket.onmessage = (event) => {
+        const blob = event.data;
+        const reader = new FileReader();
 
-            webSocket.onclose = () => {
-                console.log('Disconnected from WebSocket server');
-            };
+        reader.onload = () => {
+            const data = JSON.parse(reader.result);
+            const now = new Date();
+            const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+            // Create and append the message
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('message');
+            messageElement.innerHTML = `
+                <span class="sender">${data.senderName}:</span> ${data.text}<br>
+                <span class="timestamp">${timeString}</span>
+            `;
+            chatMessages.appendChild(messageElement);
+            scrollToBottom();
+        };
+
+        reader.readAsText(blob);
+    };
+
+    webSocket.onerror = (error) => {
+        console.error('WebSocket error:', error);
+    };
+
+    webSocket.onclose = () => {
+        console.log('Disconnected from WebSocket server');
+    };
+}
+
+// Send a message
+function sendMessage() {
+    const messageText = chatInput.value.trim();
+    if (messageText !== '') {
+        const now = new Date();
+        const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+        const message = {
+            text: messageText,
+            senderName: currentUser,
+            timestamp: timeString,
+        };
+
+        // Check if WebSocket is open before sending the message
+        if (webSocket.readyState === WebSocket.OPEN) {
+            // Append message locally before sending
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('message');
+            messageElement.innerHTML = `
+                <span class="sender">${message.senderName}:</span> ${message.text}<br>
+                <span class="timestamp">${message.timestamp}</span>
+            `;
+            chatMessages.appendChild(messageElement);
+            scrollToBottom();
+
+            webSocket.send(JSON.stringify(message));
+            chatInput.value = ''; // Clear the input after sending
+        } else {
+            console.error('WebSocket is not open: unable to send message');
+            // Optionally, try reconnecting or alert the user
         }
+    }
+}
 
-        function sendMessage() {
-            const messageText = chatInput.value.trim();
-            if (messageText !== '' && webSocket.readyState === WebSocket.OPEN) {
-                const message = { text: messageText, senderName: currentUser };
-                webSocket.send(JSON.stringify(message));
-                chatInput.value = '';
-            }
-        }
+// Scroll to the bottom of the chat
+function scrollToBottom() {
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+}
 
-        sendButton.addEventListener('click', sendMessage);
-        chatInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') sendMessage();
-        });
+// Attach event listeners
+sendButton.addEventListener('click', sendMessage);
+chatInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+        sendMessage();
+    }
+});
 
-        connectWebSocket();
-    </script>
+// Connect to WebSocket on page load
+connectWebSocket();
+
+  </script>
+  
 </body>
 </html>
