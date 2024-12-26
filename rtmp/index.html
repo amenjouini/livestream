@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- Previous head section remains the same -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Live Stream & Chat</title>
     <style>
-        /* Previous styles remain the same until chat-messages */
         * {
             margin: 0;
             padding: 0;
@@ -70,8 +68,7 @@
             background: #1e1e1e;
             display: flex;
             flex-direction: column;
-            min-height: 0;
-            position: relative;
+            min-height: 0; /* Important for proper flexbox scrolling */
         }
 
         .chat-header {
@@ -86,14 +83,9 @@
         .chat-messages {
             flex: 1;
             padding: 10px;
-            padding-bottom: 16px; /* Added extra padding at bottom */
             overflow-y: auto;
             font-size: 0.9em;
             scrollbar-color: #4caf50 #333;
-            scroll-behavior: smooth; /* Smooth scrolling */
-            display: flex;
-            flex-direction: column;
-            gap: 8px; /* Consistent gap between messages */
         }
 
         .chat-messages::-webkit-scrollbar {
@@ -106,14 +98,13 @@
         }
 
         .message {
-            margin-bottom: 0; /* Removed margin, using gap instead */
+            margin-bottom: 8px;
             padding: 8px 12px;
             border-radius: 15px;
             max-width: 85%;
             word-wrap: break-word;
             background-color: #f1f1f1;
             color: #333;
-            opacity: 1; /* Ensure messages are fully visible */
         }
 
         .sender {
@@ -138,8 +129,6 @@
             flex-shrink: 0;
             position: sticky;
             bottom: 0;
-            z-index: 10;
-            border-top: 1px solid #444;
         }
 
         .chat-input input {
@@ -211,14 +200,12 @@
     <div class="container">
         <div class="welcome-banner">Welcome to my soutenance!</div>
         <div class="stream">
-            <iframe webkitAllowFullScreen mozallowfullscreen allowfullscreen 
-            src="https://embed.wowza.com/api/video/embed.jsp?id=5vs6gq5p&pi=89335023-e9fd-435f-8f07-ffd29047fbe9" 
-            title="0" byline="0" portrait="0" frameborder="0" allow="autoplay" 
-            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+            <div class="flowplayer-embed-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width:100%;">
+                <iframe webkitAllowFullScreen mozallowfullscreen allowfullscreen src="https://embed.wowza.com/api/video/embed.jsp?id=5vs6gq5p&pi=89335023-e9fd-435f-8f07-ffd29047fbe9" title="0" byline="0" portrait="0" frameborder="0" allow="autoplay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+              </div>
         </div>
         <div class="chat">
             <div class="chat-header">Live Chat</div>
-          
             <div class="chat-input">
                 <input type="text" id="chatInput" placeholder="Type a message...">
                 <button id="sendButton">Send</button>
@@ -227,6 +214,7 @@
     </div>
 
     <script>
+        // Your existing JavaScript code remains unchanged
         let webSocket;
         const chatMessages = document.getElementById('chatMessages');
         const chatInput = document.getElementById('chatInput');
@@ -291,11 +279,7 @@
                         <span class="timestamp">${message.timestamp}</span>
                     `;
                     chatMessages.appendChild(messageElement);
-                    
-                    // Scroll to the new message with a slight delay to ensure rendering
-                    setTimeout(() => {
-                        scrollToBottom();
-                    }, 50);
+                    scrollToBottom();
 
                     webSocket.send(JSON.stringify(message));
                     chatInput.value = '';
@@ -304,18 +288,7 @@
         }
 
         function scrollToBottom() {
-            // Calculate the exact scroll position needed
-            const lastMessage = chatMessages.lastElementChild;
-            if (lastMessage) {
-                const lastMessageHeight = lastMessage.offsetHeight;
-                const chatMessagesHeight = chatMessages.offsetHeight;
-                const scrollPosition = chatMessages.scrollHeight - chatMessagesHeight;
-                
-                chatMessages.scrollTo({
-                    top: scrollPosition,
-                    behavior: 'smooth'
-                });
-            }
+            chatMessages.scrollTop = chatMessages.scrollHeight;
         }
 
         sendButton.addEventListener('click', sendMessage);
@@ -326,9 +299,6 @@
         });
 
         connectWebSocket();
-
-        // Initial scroll to bottom
-        setTimeout(scrollToBottom, 100);
     </script>
 </body>
 </html>
