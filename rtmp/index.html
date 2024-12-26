@@ -169,6 +169,7 @@
             }
 
             .chat-input {
+            position: fixed;
                 padding: 6px;
             }
 
@@ -211,16 +212,7 @@
         </div>
         <div class="chat">
             <div class="chat-header">Live Chat</div>
-            <div class="chat-messages" id="chatMessages">
-                <div class="message">
-                    <span class="sender">User1:</span> Hello, this is awesome!
-                    <span class="timestamp">12:30 PM</span>
-                </div>
-                <div class="message">
-                    <span class="sender">User2:</span> Totally agree!
-                    <span class="timestamp">12:31 PM</span>
-                </div>
-            </div>
+            
             <div class="chat-input">
                 <input type="text" id="chatInput" placeholder="Type a message...">
                 <button id="sendButton">Send</button>
