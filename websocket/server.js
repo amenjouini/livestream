@@ -1,7 +1,7 @@
 const WebSocket = require('ws');
 
-// Use Heroku's assigned PORT or default to 8081 locally
-const PORT = process.env.PORT || 8081;
+// Use port 8081 for WebSocket internally
+const PORT = 8081;
 const wss = new WebSocket.Server({ port: PORT });
 
 console.log(`WebSocket server is running on port: ${PORT}`);
