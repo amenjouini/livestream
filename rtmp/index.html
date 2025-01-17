@@ -113,6 +113,16 @@
         border-radius: 5px;
       }
 
+      .view-counter {
+        background: #333;
+        color: #fff;
+        padding: 10px;
+        text-align: center;
+        font-size: 1.2em;
+        font-weight: bold;
+        margin-top: 10px;
+      }
+
       .message {
         margin-bottom: 8px;
         padding: 8px 12px;
@@ -216,6 +226,8 @@
     <div class="container">
       <div class="welcome-banner"></div>
       <div class="stream">
+        <div class="view-counter"><span id="viewCount">0</span> viewers</div>
+
         <iframe
           webkitAllowFullScreen
           mozallowfullscreen
@@ -244,6 +256,27 @@
       const chatInput = document.getElementById("chatInput");
       const sendButton = document.getElementById("sendButton");
       let currentUser = "User";
+
+      // Define a unique namespace and key for the counter
+      const namespace = "my-stream";
+      const key = "viewers";
+
+      // Function to fetch and display the view count
+      function fetchAndUpdateViewCount() {
+        // Increment the view count in the API
+        fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
+          .then((response) => response.json())
+          .then((data) => {
+            // Display the updated view count
+            document.getElementById("viewCount").textContent = data.value;
+          })
+          .catch((error) => {
+            console.error("Error fetching view count:", error);
+          });
+      }
+
+      // Fetch and update the view count on page load
+      fetchAndUpdateViewCount();
 
       function connectWebSocket() {
         webSocket = new WebSocket("wss://livechat-dagd.onrender.com/");
